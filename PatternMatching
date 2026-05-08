@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string text, pattern;
+    int i = 0, j = 0;
+    bool found = false;
+
+    cout << "Enter text: ";
+    getline(cin, text);
+
+    cout << "Enter pattern: ";
+    getline(cin, pattern);
+
+
+    int n = 0;
+    i = 0;
+    while (text[i] != '\0') {
+        n++;
+        i++;
+    }
+
+
+    int m = 0;
+    j = 0;
+    while (pattern[j] != '\0') {
+        m++;
+        j++;
+    }
+
+    for (i = 0; i <= n - m; i++) {
+        for (j = 0; j < m; j++) {
+            if (text[i + j] != pattern[j]) {
+                break;
+            }
+        }
+        if (j == m) {
+            found = true;
+            break;
+        }
+    }
+
+    if (found)
+        cout << "Pattern found" << endl;
+    else
+        cout << "Pattern not found" << endl;
+
+    return 0;
+}
+
+[24bcs170@mepcolinux ex2]$.g++ match.cpp
+[24bcs170@mepcolinux ex2]$./a.out
+Enter text: hello harish
+Enter pattern: harish
+Pattern found
+[24bcs170@mepcolinux ex2]$./a.out
+Enter text: hell shiva
+Enter pattern: siva
+Pattern not found
